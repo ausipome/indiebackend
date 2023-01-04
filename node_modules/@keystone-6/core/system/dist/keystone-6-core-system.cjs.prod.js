@@ -1,0 +1,62 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var createSystem = require('../../dist/createSystem-3273dd8c.cjs.prod.js');
+var createAdminUIMiddleware = require('../../dist/createAdminUIMiddleware-9659d40e.cjs.prod.js');
+var initConfig = require('../../dist/initConfig-e90b5265.cjs.prod.js');
+var createApolloServer = require('../../dist/createApolloServer-905d50c9.cjs.prod.js');
+require('@babel/runtime/helpers/objectSpread2');
+require('p-limit');
+require('../../dist/core-ee045966.cjs.prod.js');
+require('../../dist/next-fields-98c83ec4.cjs.prod.js');
+require('decimal.js');
+require('../../dist/graphql-ts-schema-e1666bd5.cjs.prod.js');
+require('@graphql-ts/schema');
+require('graphql-upload/GraphQLUpload.js');
+require('graphql');
+require('@graphql-ts/schema/api-without-context');
+require('@graphql-ts/extend');
+require('@graphql-ts/schema/api-with-context');
+require('../../dist/createAdminMeta-6e1de6fb.cjs.prod.js');
+require('path');
+require('../../dist/utils-da6352ea.cjs.prod.js');
+require('@babel/runtime/helpers/classPrivateFieldInitSpec');
+require('@babel/runtime/helpers/classPrivateFieldGet');
+require('@babel/runtime/helpers/classPrivateFieldSet');
+require('../../dist/types-for-lists-2f8b1685.cjs.prod.js');
+require('graphql/execution/values');
+require('../../dist/graphql-errors-d408b25e.cjs.prod.js');
+require('apollo-server-errors');
+require('pluralize');
+require('dataloader');
+require('@babel/runtime/helpers/objectWithoutProperties');
+require('@babel/runtime/helpers/defineProperty');
+require('uuid');
+require('image-type');
+require('image-size');
+require('stream');
+require('fs-extra');
+require('@aws-sdk/s3-request-presigner');
+require('@aws-sdk/client-s3');
+require('@aws-sdk/lib-storage');
+require('crypto');
+require('filenamify');
+require('@sindresorhus/slugify');
+require('http');
+require('cors');
+require('express');
+require('graphql-upload/graphqlUploadExpress.js');
+require('url');
+require('cuid');
+require('apollo-server-micro');
+require('apollo-server-express');
+require('apollo-server-core');
+
+
+
+exports.createSystem = createSystem.createSystem;
+exports.createAdminUIMiddleware = createAdminUIMiddleware.createAdminUIMiddleware;
+exports.createExpressServer = createAdminUIMiddleware.createExpressServer;
+exports.initConfig = initConfig.initConfig;
+exports.createApolloServerMicro = createApolloServer.createApolloServerMicro;

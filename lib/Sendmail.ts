@@ -35,13 +35,21 @@ export interface Envelope {
 }
 
 export async function sendEmail(to: string): Promise<void> {
-  await transport.sendMail({
-    to,
+
+  var mailOptions = {
+    to:to,
     from: 'hello@indiebubba.com',
     subject: 'Hello This is a test!',
     html: makeANiceEmail(`Your lovely email is here!
         
         <a href="hello.com">Click here to Say hello</a>
         `),
-  });
+  }
+  
+  await transport.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);
+});
 }

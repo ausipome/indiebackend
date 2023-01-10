@@ -43,14 +43,14 @@ export async function releasedEmail(
 ): Promise<void> {
   const amountTotal = (parseInt(amount) / 100).toFixed(2);
 
-  await transport.sendMail({
-    to,
+  var mailOptions = {
+    to:to,
     from: '"Indie Bubba 👶" <noreply@indiebubba.com>',
     subject: 'The funds have been released for your Indie Bubba item!',
     attachments: [
       {
         filename: 'logo.png',
-        path: 'https://indiebubba.com/images/logo.png',
+        path: 'https://res.cloudinary.com/ausipome/image/upload/v1673297335/website/logo_qtom17.png',
         cid: 'uniq-logo.png',
       },
     ],
@@ -59,5 +59,12 @@ export async function releasedEmail(
         <p>Item: ${item}</p>
         <img alt="Item Image" src="${photo}" width="200px">
         `),
-  });
+  }
+
+  await transport.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);
+});
 }

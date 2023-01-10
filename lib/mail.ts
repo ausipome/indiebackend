@@ -39,14 +39,15 @@ export async function sendPasswordResetEmail(
   resetToken: string,
   to: string
 ): Promise<void> {
-  await transport.sendMail({
-    to,
+
+  var mailOptions = {
+    to:to,
     from: 'noreply@indiebubba.com',
     subject: 'Your Password Reset Token!',
     attachments: [
       {
         filename: 'logo.png',
-        path: 'https://indiebubba.com/images/logo.png',
+        path: 'https://res.cloudinary.com/ausipome/image/upload/v1673297335/website/logo_qtom17.png',
         cid: 'uniq-logo.png',
       },
     ],
@@ -54,5 +55,12 @@ export async function sendPasswordResetEmail(
         
         <a href="${process.env.FRONTEND_URL}/reset?token=${resetToken}">Click here to reset password!</a>
         `),
-  });
+  }
+
+  await transport.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);
+});
 }

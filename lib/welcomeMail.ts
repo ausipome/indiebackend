@@ -36,14 +36,15 @@ export interface Envelope {
 }
 
 export async function welcomeEmail(token: string, to: string): Promise<void> {
-  await transport.sendMail({
+
+  var mailOptions = {
     to,
     from: 'noreply@indiebubba.com',
     subject: 'Welcome to Indie Bubba!',
     attachments: [
       {
         filename: 'logo.png',
-        path: 'https://indiebubba.com/images/logo.png',
+        path: 'https://res.cloudinary.com/ausipome/image/upload/v1673297335/website/logo_qtom17.png',
         cid: 'uniq-logo.png',
       },
     ],
@@ -51,5 +52,13 @@ export async function welcomeEmail(token: string, to: string): Promise<void> {
         
         <p>Please click <a href="${process.env.FRONTEND_URL}/SignIn?token=${token}">here</a> to confirm your email address</p>
         `),
-  });
+  }
+
+  await transport.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);
+});
+
 }

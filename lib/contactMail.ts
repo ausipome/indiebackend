@@ -41,14 +41,15 @@ export async function contactEmail(
   photo: string,
   message: string
 ): Promise<void> {
-  await transport.sendMail({
-    to,
+
+  var mailOptions = {
+    to:to,
     from: '"Indie Bubba 👶" <noreply@indiebubba.com>',
     subject: 'You have received the following message through Indie Bubba!',
     attachments: [
       {
         filename: 'logo.png',
-        path: 'https://indiebubba.com/images/logo.png',
+        path: 'https://res.cloudinary.com/ausipome/image/upload/v1673297335/website/logo_qtom17.png',
         cid: 'uniq-logo.png',
       },
     ],
@@ -58,5 +59,13 @@ export async function contactEmail(
         <p style="text-decoration:underline;">${item}</p>
         <img alt="Item Image" src="${photo}" width="200px">
         `),
-  });
+  }
+
+  await transport.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);
+});
+
 }

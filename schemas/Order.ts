@@ -1,6 +1,6 @@
 import { integer, text, relationship, virtual, timestamp } from '@keystone-6/core/fields';
 import { list, graphql } from '@keystone-6/core';
-import { isSignedIn, rules } from '../access';
+import { permissions, isSignedIn, rules } from '../access';
 import { Lists } from '.keystone/types';
 
 const formatter = new Intl.NumberFormat('en-GB', {
@@ -23,6 +23,11 @@ export const Order: Lists.Order = list({
       delete: () => false,
       query: isSignedIn,
     },
+  },
+  ui: {
+    hideCreate: args => !permissions.canManageRoles(args),
+    hideDelete: args => !permissions.canManageRoles(args),
+    isHidden: args => !permissions.canManageRoles(args),
   },
   fields: {
     label: virtual({

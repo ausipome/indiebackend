@@ -1,7 +1,7 @@
 import { integer, relationship } from '@keystone-6/core/fields';
 import { list } from '@keystone-6/core';
 import { allOperations, allowAll } from '@keystone-6/core/access';
-import { rules, isSignedIn } from '../access';
+import { permissions, rules, isSignedIn } from '../access';
 
 export const CartItem = list({
   access: {
@@ -16,9 +16,9 @@ export const CartItem = list({
     },
   },
   ui: {
-    listView: {
-      initialColumns: ['product', 'quantity', 'user'],
-    },
+    hideCreate: args => !permissions.canManageRoles(args),
+    hideDelete: args => !permissions.canManageRoles(args),
+    isHidden: args => !permissions.canManageRoles(args),
   },
   fields: {
     // TODO: Custom Label in here

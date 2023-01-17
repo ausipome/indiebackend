@@ -2,7 +2,7 @@ import { integer,
   select, text, relationship,
   timestamp } from '@keystone-6/core/fields';
 import { list } from '@keystone-6/core';
-import { isSignedIn, rules } from '../access';
+import {permissions, isSignedIn, rules } from '../access';
 
 export const OrderItem = list({
   access: {
@@ -12,6 +12,11 @@ export const OrderItem = list({
       delete: () => false,
       query: isSignedIn,
     },
+  },
+  ui: {
+    hideCreate: args => !permissions.canManageRoles(args),
+    hideDelete: args => !permissions.canManageRoles(args),
+    isHidden: args => !permissions.canManageRoles(args),
   },
   fields: {
     name: text({ validation: { isRequired: true } }),

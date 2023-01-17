@@ -1,7 +1,7 @@
 import { integer, select, text, relationship } from '@keystone-6/core/fields';
 import { list } from '@keystone-6/core';
 import { allOperations, allowAll } from '@keystone-6/core/access';
-import { rules, isSignedIn } from '../access';
+import {permissions, rules, isSignedIn } from '../access';
 
 export const Product = list({
   access: {
@@ -14,6 +14,11 @@ export const Product = list({
       update: rules.canManageProducts,
       delete: isSignedIn,
     },
+  },
+  ui: {
+    hideCreate: args => !permissions.canManageRoles(args),
+    hideDelete: args => !permissions.canManageRoles(args),
+    isHidden: args => !permissions.canManageRoles(args),
   },
   fields: {
     name: text({ validation: { isRequired: true } }),

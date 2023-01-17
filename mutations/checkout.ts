@@ -48,7 +48,6 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
   const amount = cartItems.reduce(function (tally: number, cartItem: any) {
     return tally + cartItem.quantity * cartItem.product.price;
   }, 0);
-  console.log(amount);
     // 3. create the charge with the stripe library
     const charge = await stripeConfig.paymentIntents.create({
       amount,
@@ -59,7 +58,6 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
       console.log(err);
       throw new Error(err.message);
     });
-    console.log(charge);
   // 4. Convert the cartItems to OrderItems
   const date = new Date();
   const dateNow=date.toISOString();
@@ -85,7 +83,6 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
     soldEmail(productName, emailToSend, sendPhoto);
     return orderItem;
   });
-  console.log('gonna create the order');
   // 5. Create the order and return it
   const order = await context.db.Order.createOne({
     data: {
@@ -97,16 +94,13 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
       timeStamp:dateNow,
     },
   });
-  console.log({ order });
   // 6. Clean up any old cart item
   const prodItemIds = user.cart.map((cartItem: any) => cartItem.product.id);
-  console.log('gonna create delete products')
   await context.query.Product.deleteMany({
     where: prodItemIds.map((id: string) => ({ id })),
   });
 
   const cartItemIds = user.cart.map((cartItem: any) => cartItem.id);
-  console.log('gonna create delete cartItems');
   await context.query.CartItem.deleteMany({
     where: cartItemIds.map((id: string) => ({ id })),
   });

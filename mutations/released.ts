@@ -58,7 +58,6 @@ const transfer = await stripeConfig.transfers.create({
     console.log(err);
     throw new Error(err.message);
   });
-  console.log(transfer);
   
   const productName =queryOrder.name;
   const emailToSend=queryOrder.user.email;

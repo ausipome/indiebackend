@@ -6,7 +6,6 @@ async function addToCart(
   { productId }: { productId?: string | null },
   context: Context
 ): Promise<any> {
-  console.log('ADDING TO CART!');
   // 1. Query the current user see if they are signed in
   const sesh = context.session as Session;
   if (!sesh.itemId) {
@@ -20,7 +19,6 @@ async function addToCart(
 
   const [existingCartItem] = allCartItems;
   if (existingCartItem) {
-    console.log(existingCartItem);
     /*
     console.log(`There are already ${existingCartItem.quantity}, increment by 1!`);
     // 3. See if the current item is in their cart

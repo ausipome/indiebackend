@@ -19,6 +19,7 @@ async function stripeUser(
     business_type: 'individual',
     business_profile: {product_description: 'Selling clothes on the Indie Bubba marketplace'},
     business_profile: {url: 'https://indiebubba.com'},
+    business_profile: {mcc: '5641'},
     email: email,
   }).catch(err => {
     throw new Error(err.message);

@@ -103,10 +103,10 @@ model OrderItem {
 model Order {
   id        String      @id @default(cuid())
   total     Int?
+  charge    String      @default("")
   items     OrderItem[] @relation("OrderItem_order")
   user      User?       @relation("Order_user", fields: [userId], references: [id])
   userId    String?     @map("user")
-  charge    String      @default("")
   timeStamp DateTime?
   date      String      @default("")
 

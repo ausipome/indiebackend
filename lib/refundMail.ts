@@ -58,6 +58,7 @@ export async function refundEmail(
     html: makeANiceEmail(`
         <p>You have been refunded &pound;${amountTotal}</p>
         <p>For item: ${item}</p>
+        <p>Please allow 7 working days for the payment to appear in your account.</p>
         <img alt="Item Image" src="${photo}" width="200px">
         `),
   }

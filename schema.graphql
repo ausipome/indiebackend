@@ -669,10 +669,10 @@ type Order {
   id: ID!
   label: String
   total: Int
+  charge: String
   items(where: OrderItemWhereInput! = {}, orderBy: [OrderItemOrderByInput!]! = [], take: Int, skip: Int! = 0): [OrderItem!]
   itemsCount(where: OrderItemWhereInput! = {}): Int
   user: User
-  charge: String
   timeStamp: DateTime
   date: String
 }
@@ -687,9 +687,9 @@ input OrderWhereInput {
   NOT: [OrderWhereInput!]
   id: IDFilter
   total: IntNullableFilter
+  charge: StringFilter
   items: OrderItemManyRelationFilter
   user: UserWhereInput
-  charge: StringFilter
   timeStamp: DateTimeNullableFilter
   date: StringFilter
 }
@@ -710,9 +710,9 @@ input OrderOrderByInput {
 
 input OrderUpdateInput {
   total: Int
+  charge: String
   items: OrderItemRelateToManyForUpdateInput
   user: UserRelateToOneForUpdateInput
-  charge: String
   timeStamp: DateTime
   date: String
 }
@@ -731,9 +731,9 @@ input OrderUpdateArgs {
 
 input OrderCreateInput {
   total: Int
+  charge: String
   items: OrderItemRelateToManyForCreateInput
   user: UserRelateToOneForCreateInput
-  charge: String
   timeStamp: DateTime
   date: String
 }

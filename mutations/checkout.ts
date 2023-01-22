@@ -1,5 +1,4 @@
 import { Context } from '.keystone/types';
-import stripeConfig from '../lib/stripe';
 import { soldEmail } from '../lib/soldMail';
 
 const graphql = String.raw;
@@ -48,17 +47,7 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
   const amount = cartItems.reduce(function (tally: number, cartItem: any) {
     return tally + cartItem.quantity * cartItem.product.price;
   }, 0);
-    // 3. create the charge with the stripe library
-    const charge = await stripeConfig.paymentIntents.create({
-      amount,
-      currency: 'GBP',
-      confirm: true,
-      payment_method: token,
-    }).catch(err => {
-      console.log(err);
-      throw new Error(err.message);
-    });
-  // 4. Convert the cartItems to OrderItems
+  // 3. Convert the cartItems to OrderItems
   const date = new Date();
   const dateNow=date.toISOString();
   const timeElapsed = Date.now();
@@ -86,8 +75,8 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
   // 5. Create the order and return it
   const order = await context.db.Order.createOne({
     data: {
-      total: charge.amount,
-      charge: charge.id,
+      total: amount,
+      charge: token,
       items: { create: orderItems },
       user: { connect: { id: userId } },
       date: today.toDateString(),

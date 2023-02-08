@@ -9,7 +9,7 @@ import updateOrderReceived from './updateOrderReceived';
 import updateOrderResolved from './updateOrderResolved';
 import refund from './refund';
 import released from './released';
-
+import createCustomProduct from './createCustomProduct';
 
 export const extendGraphqlSchema = graphql.extend(base => {
   return {
@@ -64,6 +64,11 @@ export const extendGraphqlSchema = graphql.extend(base => {
         args: { id: graphql.arg({ type: graphql.nonNull(graphql.ID) })},
         resolve: released,
       }),
+      createCustomProduct: graphql.field({
+        type: base.object('OrderItem'),
+        args: { name: graphql.arg({ type: graphql.nonNull(graphql.String) }), description: graphql.arg({ type: graphql.nonNull(graphql.String) }), price: graphql.arg({ type: graphql.nonNull(graphql.Int) }), condition: graphql.arg({ type: graphql.nonNull(graphql.String) })},
+        resolve: createCustomProduct,
+      }), 
     },
   };
 });

@@ -55,7 +55,7 @@ export async function soldEmail(
     html: makeANiceEmail(`
         
         <p>${item}</p>
-        <img alt="Item Image" src="${photo}" width="200px">
+        <img alt="Item Image" src="https://theimagesofindiebubba.toomanyideas.co.uk/${photo}" width="200px">
         `),
 };
 

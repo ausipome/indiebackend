@@ -7,7 +7,6 @@ import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
 import { CartItem } from './schemas/CartItem';
 import { Chat } from './schemas/Chat';
-import { ProductImage } from './schemas/ProductImage';
 import { Product } from './schemas/Product';
 import { User } from './schemas/User';
 import 'dotenv/config';
@@ -44,7 +43,7 @@ export default withAuth(
   config<TypeInfo>({
     server: {
       cors: {
-        origin: ['https://www.indiebubba.com','https://indiebubba.com'],
+        origin: ['http://localhost:7777'],
         credentials: true,
       },
     },
@@ -62,7 +61,6 @@ export default withAuth(
       // Schema items go in here
       User,
       Product,
-      ProductImage,
       CartItem,
       OrderItem,
       Order,

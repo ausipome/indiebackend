@@ -21,11 +21,7 @@ async function updateOrderStatus(
       status
       name
       order{user{email}}
-      photo {
-            image {
-              publicUrlTransformed
-            }
-          }
+      photo 
     `
   });
   console.dir(queryOrder, { depth: null })
@@ -34,7 +30,7 @@ async function updateOrderStatus(
 
   const productName =queryOrder.name;
   const emailToSend=queryOrder.order.user.email;
-  const sendPhoto =queryOrder.photo.image.publicUrlTransformed;
+  const sendPhoto =queryOrder.photo;
   postedEmail(productName, emailToSend, sendPhoto);
 
     const orderUpdate = await context.query.OrderItem.updateOne({

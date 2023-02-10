@@ -21,11 +21,7 @@ async function updateOrderFlagged(
       status
       name
       email
-      photo {
-            image {
-              publicUrlTransformed
-            }
-          }
+      photo 
     `
   });
   console.dir(queryOrder, { depth: null })
@@ -34,7 +30,7 @@ async function updateOrderFlagged(
 
   const productName =queryOrder.name;
   const emailToSend=queryOrder.email;
-  const sendPhoto =queryOrder.photo.image.publicUrlTransformed;
+  const sendPhoto =queryOrder.photo;
   flaggedEmail(productName, emailToSend, sendPhoto);
 
     const orderUpdate = await context.query.OrderItem.updateOne({

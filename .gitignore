@@ -1,4 +1,5 @@
 .env
 .keystone
 .htaccess
+node_modules
 

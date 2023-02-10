@@ -26,11 +26,7 @@ async function refund(
       order{
         charge
         user{email}}
-      photo {
-            image {
-              publicUrlTransformed
-            }
-          }
+      photo 
     `
   });
   console.dir(queryOrder, { depth: null })
@@ -49,7 +45,7 @@ const refund = await stripeConfig.refunds.create({
   
   const productName =queryOrder.name;
   const emailToSend=queryOrder.order.user.email;
-  const sendPhoto =queryOrder.photo.image.publicUrlTransformed;
+  const sendPhoto =queryOrder.photo;
   refundEmail(productName, emailToSend, sendPhoto, amount);
 
     const orderUpdate = await context.query.OrderItem.updateOne({

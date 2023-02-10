@@ -59,7 +59,7 @@ export async function flaggedEmail(
     html: makeANiceEmail(`
         
         <p>Item: ${item}</p>
-        <img alt="Item Image" src="${photo}" width="200px">
+        <img alt="Item Image" src="https://theimagesofindiebubba.toomanyideas.co.uk/${photo}" width="200px">
         `),
   }
   await transport.sendMail(mailOptions, (error, info) => {

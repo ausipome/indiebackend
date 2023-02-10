@@ -30,13 +30,7 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
           price
           description
           id
-          photo {
-            id
-            image {
-              id
-              publicUrlTransformed
-            }
-          }
+          photo 
         }
       }
     `,
@@ -61,14 +55,14 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
       description: cartItem.product.description,
       price: cartItem.product.price,
       quantity: cartItem.quantity,
-      photo: { connect: { id: cartItem.product.photo.id } },
+      photo: cartItem.product.photo,
       date: today.toDateString(),
       timeStamp:dateNow,
     };
     const productName =cartItem.product.name;
     const emailTo=JSON.parse(cartItem.product.email);
     const emailToSend=emailTo.email;
-    const sendPhoto =cartItem.product.photo.image.publicUrlTransformed;
+    const sendPhoto =cartItem.product.photo;
     soldEmail(productName, emailToSend, sendPhoto);
     return orderItem;
   });

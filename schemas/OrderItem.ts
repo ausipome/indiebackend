@@ -25,15 +25,7 @@ export const OrderItem = list({
         displayMode: 'textarea',
       },
     }),
-    photo: relationship({
-      ref: 'ProductImage',
-      ui: {
-        displayMode: 'cards',
-        cardFields: ['image', 'altText'],
-        inlineCreate: { fields: ['image', 'altText'] },
-        inlineEdit: { fields: ['image', 'altText'] },
-      },
-    }),
+    photo: text(),
     price: integer(),
     quantity: integer(),
     order: relationship({ ref: 'Order.items' }),

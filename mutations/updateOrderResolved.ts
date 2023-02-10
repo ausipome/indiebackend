@@ -28,11 +28,7 @@ async function updateOrderResolved(
       status
       name
       order{user{email}}
-      photo {
-            image {
-              publicUrlTransformed
-            }
-          }
+      photo 
     `
   });
   console.dir(queryOrder, { depth: null })
@@ -62,7 +58,7 @@ const transfer = await stripeConfig.transfers.create({
   
   const productName =queryOrder.name;
   const emailToSend=queryOrder.user.email;
-  const sendPhoto =queryOrder.photo.image.publicUrlTransformed;
+  const sendPhoto =queryOrder.photo;
   resolvedEmail(productName, emailToSend, sendPhoto, transferAmount);
 
     const orderUpdate = await context.query.OrderItem.updateOne({
@@ -77,7 +73,7 @@ const transfer = await stripeConfig.transfers.create({
   else{
     const productName =queryOrder.name;
     const emailToSend=queryOrder.user.email;
-    const sendPhoto =queryOrder.photo.image.publicUrlTransformed;
+    const sendPhoto =queryOrder.photo;
     holdEmail(productName, emailToSend, sendPhoto);
   
       const orderUpdate = await context.query.OrderItem.updateOne({

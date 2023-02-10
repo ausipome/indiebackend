@@ -21,11 +21,7 @@ async function createChatter(
         name
         email
         order{user{email}}
-        photo {
-            image {
-              publicUrlTransformed
-            }
-          }
+        photo 
         
       `
     });
@@ -33,7 +29,7 @@ async function createChatter(
 
     var emailToSend='';
     const productName=product.name;
-    const sendPhoto =product.photo.image.publicUrlTransformed;
+    const sendPhoto =product.photo;
     if(pageTypeMod==='buyer'){emailToSend=product.email}
     if(pageTypeMod==='seller'){emailToSend=product.order.user.email}
 

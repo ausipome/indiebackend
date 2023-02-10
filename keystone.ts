@@ -43,7 +43,7 @@ export default withAuth(
   config<TypeInfo>({
     server: {
       cors: {
-        origin: ['http://localhost:7777'],
+        origin: ['https://indiebubba.co.uk','https://www.indiebubba.co.uk'],
         credentials: true,
       },
     },

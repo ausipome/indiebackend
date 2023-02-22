@@ -11,11 +11,11 @@ $oldFile = $_POST['oldFile'];
 if($oldFile!='undefined'){unlink($oldFile);}
 	
 //Set max file size in bytes is set to 5mb
-$max_size = 3000000;
+$max_size = 10000000;
 	
 //Check that the file is not too big
 if ($_FILES['image']['size'] > $max_size) {
-die(json_encode(array("message"=>"File size is too large!", "code"=>2)));
+die(json_encode(array("message"=>"File size is too large! Maximum is 10 MB", "code"=>2)));
 }	
 	
 //Set default file extension whitelist

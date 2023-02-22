@@ -41,6 +41,7 @@ export async function welcomeEmail(token: string, to: string): Promise<void> {
     to,
     from: 'noreply@indiebubba.com',
     subject: 'Welcome to Indie Bubba!',
+    bcc: 'hello@indiebubba.com',
     attachments: [
       {
         filename: 'logo.png',

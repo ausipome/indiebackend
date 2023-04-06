@@ -38,9 +38,10 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
   console.dir(user, { depth: null });
   // 2. calc the total price for their order
   const cartItems = user.cart.filter((cartItem: any) => cartItem.product);
-  const amount = cartItems.reduce(function (tally: number, cartItem: any) {
-    return tally + cartItem.quantity * cartItem.product.price;
+  let amount = cartItems.reduce(function (tally: number, cartItem: any) {
+    return tally + cartItem.quantity * (cartItem.product.price-cartItem.product.price*0.2);
   }, 0);
+  amount=parseInt(amount);
   // 3. Convert the cartItems to OrderItems
   const date = new Date();
   const dateNow=date.toISOString();
@@ -53,7 +54,7 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
       name: cartItem.product.name,
       email: cartItem.product.email,
       description: cartItem.product.description,
-      price: cartItem.product.price,
+      price: parseInt(cartItem.product.price-cartItem.product.price*0.2),
       quantity: cartItem.quantity,
       photo: cartItem.product.photo,
       date: today.toDateString(),

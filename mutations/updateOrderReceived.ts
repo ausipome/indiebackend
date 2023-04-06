@@ -67,6 +67,7 @@ const transfer = await stripeConfig.transfers.create({
             status: status 
         },
       });
+      console.dir(orderUpdate)
       return orderUpdate;
     }
   }

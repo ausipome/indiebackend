@@ -57,7 +57,7 @@ export async function contactEmail(
         <p style="color:red">${message}</p>
         <p>You can reply by logging in to your account and finding the item purchased</p>
         <p style="text-decoration:underline;">${item}</p>
-        <img alt="Item Image" src="https://theimagesofindiebubba.toomanyideas.co.uk/${photo}" width="200px">
+        <img alt="Item Image" src="https://toomanyideas.co.uk/${photo}" width="200px">
         `),
   }
 

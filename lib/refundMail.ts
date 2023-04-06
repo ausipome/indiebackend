@@ -59,7 +59,7 @@ export async function refundEmail(
         <p>You have been refunded &pound;${amountTotal}</p>
         <p>For item: ${item}</p>
         <p>Please allow 7 working days for the payment to appear in your account.</p>
-        <img alt="Item Image" src="https://theimagesofindiebubba.toomanyideas.co.uk/${photo}" width="200px">
+        <img alt="Item Image" src="https://toomanyideas.co.uk/${photo}" width="200px">
         `),
   }
 

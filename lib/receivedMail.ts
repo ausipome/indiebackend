@@ -57,7 +57,7 @@ export async function receivedEmail(
     html: makeANiceEmail(`
         <p>You have been paid &pound;${amountTotal}</p>
         <p>Item: ${item}</p>
-        <img alt="Item Image" src="https://theimagesofindiebubba.toomanyideas.co.uk/${photo}" width="200px">
+        <img alt="Item Image" src="https://toomanyideas.co.uk/${photo}" width="200px">
         `),
   }
 

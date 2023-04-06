@@ -55,7 +55,7 @@ export async function holdEmail(
     html: makeANiceEmail(`
         <p>Your payment is currently on hold until you update your Indie Bubba account! <br>Please login and update your account. <br>Once your account is up to date, you can release the funds by finding the sold item in your Indie Bubba account, and clicking Release Funds.</p>
         <p>Item: ${item}</p>
-        <img alt="Item Image" src="https://theimagesofindiebubba.toomanyideas.co.uk/${photo}" width="200px">
+        <img alt="Item Image" src="https://toomanyideas.co.uk/${photo}" width="200px">
         `),
   }
 

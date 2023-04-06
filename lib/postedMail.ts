@@ -58,7 +58,7 @@ export async function postedEmail(
     html: makeANiceEmail(`
         
         <p>Item: ${item}</p>
-        <img alt="Item Image" src="https://theimagesofindiebubba.toomanyideas.co.uk/${photo}" width="200px">
+        <img alt="Item Image" src="https://toomanyideas.co.uk/${photo}" width="200px">
         `),
   }
 

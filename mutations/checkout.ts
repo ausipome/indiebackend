@@ -39,7 +39,7 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
   // 2. calc the total price for their order
   const cartItems = user.cart.filter((cartItem: any) => cartItem.product);
   let amount = cartItems.reduce(function (tally: number, cartItem: any) {
-    return tally + cartItem.quantity * (cartItem.product.price-cartItem.product.price*0.2);
+    return tally + cartItem.quantity * (cartItem.product.price);
   }, 0);
   amount=parseInt(amount);
   // 3. Convert the cartItems to OrderItems
@@ -54,7 +54,7 @@ async function checkout(root: any, { token }: Arguments, context: Context): Prom
       name: cartItem.product.name,
       email: cartItem.product.email,
       description: cartItem.product.description,
-      price: parseInt(cartItem.product.price-cartItem.product.price*0.2),
+      price: parseInt(cartItem.product.price),
       quantity: cartItem.quantity,
       photo: cartItem.product.photo,
       date: today.toDateString(),
